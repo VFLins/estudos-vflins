@@ -27,10 +27,6 @@ time <- yearqtr(2012 + seq(1:length(desemp$Valor))/4)
 ### Graphs
 library(ggplot2)
 
-ggplot(dados, aes(Trimestre, IPCA))+geom_line(aes(color="IPCA (acumulado trimestral)"))+
-	geom_line(dados, aes(Trimestre, Desemprego, color="Desemprego trimestral"))+
-	labs(color="Legenda")
-
 ts_plot <- ggplot(dados) +
 	geom_line(aes(time, IPCA, color= "IPCA", size ="0.6")) + 
 	geom_line(aes(time , Desemprego, color= "Desemprego", size ="0.6")) +
@@ -51,4 +47,3 @@ model_plot <- ggplot(dados) +
 model_plot
 
 ### END ###
-
