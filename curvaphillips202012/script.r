@@ -1,6 +1,6 @@
-##############################################################
+########################################################################################
 # Brief study of Phillip's curve on Brazillian quarterly data
-##############################################################
+########################################################################################
 
 ### Data selection
 library(sidrar)
@@ -33,17 +33,19 @@ ts_plot <- ggplot(dados) +
 	labs(title ="IPCA vs Desemprego (trimestral)", caption ="Fonte: SIDRA") + 
 	theme_classic() + xlab("") + ylab("Valor %") + scale_color_hue(h = c(30, 110)) +
 	theme(legend.title =element_blank(), text =element_text(size =15), 
-	legend.position ='bottom') +
+		legend.position ='bottom') +
 	guides(size ="none", color=guide_legend(override.aes =list(size =3)))
 ts_plot
 
 model_plot <- ggplot(dados) +
 	geom_point(aes(Desemprego, IPCA), shape =21, size =2, stroke =3) + 
 	geom_smooth(aes(Desemprego, IPCA), method ="lm", se =FALSE, size =2) + 
-	theme_classic() + labs(title ="Encaixe do modelo simples",
-	subtitle = "Intercepto = 2,78   Coeficiente = -0,14") + xlab("Desemprego (%)") +
-	ylab("IPCA (%)") + theme(text =element_text(size =15), 
-	plot.subtitle =element_text(size =12, hjust = 0.5)) 
+	theme_classic() + 
+	labs(title ="Encaixe do modelo simples", 
+	     subtitle = "Intercepto = 2,78   Coeficiente = -0,14") +
+	xlab("Desemprego (%)") + ylab("IPCA (%)") + 
+	theme(text =element_text(size =15), 
+	      plot.subtitle =element_text(size =12, hjust = 0.5)) 
 model_plot
 
 ### END ###
