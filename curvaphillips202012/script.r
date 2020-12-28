@@ -33,7 +33,7 @@ ts_plot <- ggplot(dados) +
 	labs(title ="IPCA vs Desemprego (trimestral)", caption ="Fonte: SIDRA") + 
 	theme_classic() + xlab("") + ylab("Valor %") + scale_color_hue(h = c(30, 110)) +
 	theme(legend.title =element_blank(), text =element_text(size =15), 
-		legend.position ='bottom') +
+	      legend.position ='bottom') +
 	guides(size ="none", color=guide_legend(override.aes =list(size =3)))
 ts_plot
 
