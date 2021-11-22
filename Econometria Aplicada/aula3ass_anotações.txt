@@ -1,0 +1,45 @@
+### TESTE F:
+install.packages("car", lib ="C:/Users/vflin/Documents/R/Packages")
+library(car, lib.loc ="C:/Users/vflin/Documents/R/Packages")
+
+linearHypotesis(reg, minhaMH)
+
+//=========================================//
+
+### FORMA MATRICIAL:
+# formula
+^β = (X' * X)^-1 * X' * y
+
+# estimador
+bhat <- solve(t(X) %*% X) %*% t(X) %*% t
+
+# vetor de resíduos
+ehat <- y - X %*% bhat 
+
+# var estimada
+varhat <- as.numeric(t(ehat) %*% ehat/n-k) 
+
+# matriz de var-cov
+vcov <- varhat * solve(t(X) %*% X)
+
+# erros padrão
+ep <- sqrt(diag(vcov))
+
+//=========================================//
+
+AJUSTES NA REGRESSÃO:
+
+# mudar unidade de medida da observação
+tx.conv <- #valor#
+lm(y ~ x * tx.conv, data)
+
+# valores relativos (para y)
+lm(log(y) ~ x, data)
+
+# adicionar termo quadrático (para x)
+lm(y ~ x + I(x^2), data)
+
+# termos de interação entre duas variáveis (x_1 e x_2)
+myreg <- lm(y ~ x_1 + x_2 + x_1 * x_2, data)
+# estimativa do efeito parcial de x_1 em y
+efeito <- coef(myreg)[2] + coef(myreg)[4] * mean(x_2)
